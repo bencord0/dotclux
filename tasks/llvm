@@ -5,6 +5,7 @@
 
 LLVM=http://llvm.org/releases/$1.$2.$3/llvm-$1.$2.$3.src.tar.xz
 CLANG=http://llvm.org/releases/$1.$2.$3/cfe-$1.$2.$3.src.tar.xz
+LLDB=http://llvm.org/releases/$1.$2.$3/lldb-$1.$2.$3.src.tar.xz
 EXTRA=http://llvm.org/releases/$1.$2.$3/clang-tools-extra-$1.$2.$3.src.tar.xz
 COMPILERRT=http://llvm.org/releases/$1.$2.$3/compiler-rt-$1.$2.$3.src.tar.xz
 
@@ -14,6 +15,8 @@ echo "fetch $LLVM"
 wget $LLVM
 echo "fetch $CLANG"
 wget $CLANG
+echo "fetch $LLDB"
+wget $LLDB
 echo "fetch $EXTRA"
 wget $EXTRA
 echo "fetch $COMPILERRT"
@@ -24,6 +27,9 @@ tar xf ../llvm-$1.$2.$3.src.tar.xz --strip-components=1
 # clang goes in tools/clang
 mkdir -p tools/clang && cd tools/clang
 tar xf ../../../cfe-$1.$2.$3.src.tar.xz --strip-components=1
+# lldb goes in tools/lldb
+mkdir -p tools/lldb && cd tools/lldb
+tar xf ../../../lldb-$1.$2.$3.src.tar.xz --strip-components=1
 # extra goes in tools/clang/tools/extra
 mkdir -p tools/extra && cd tools/extra
 tar xf ../../../../../clang-tools-extra-$1.$2.$3.src.tar.xz --strip-components=1
